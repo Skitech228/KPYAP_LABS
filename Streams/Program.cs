@@ -11,6 +11,7 @@ namespace Streams
         private static Mutex mutex = new Mutex();
         private static void Main(string[] args)
         {
+            File.Delete("state.out.txt");
             Thread thread1 = new Thread(Thread1);
             thread1.Start();
             Thread thread2 = new Thread(Thread2);
@@ -20,7 +21,7 @@ namespace Streams
         private static void Thread1()
         {
             var str = File.ReadAllText("number.in.T1.txt");
-            File.Delete("state.out.txt");
+            //File.Delete("state.out.txt");
             for (int i = 0; i < str.Length; i++)
             {
                 mutex.WaitOne();
